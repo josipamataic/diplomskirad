@@ -1,0 +1,15 @@
+.footer-list{
+    flex-direction: row;
+}
+
+.razdvoji{
+    padding-right: 10px;
+}
+
+.fixed-bottom {
+    
+    font-weight: normal;
+    text-align: center;
+    font-size: 14px;
+
+}

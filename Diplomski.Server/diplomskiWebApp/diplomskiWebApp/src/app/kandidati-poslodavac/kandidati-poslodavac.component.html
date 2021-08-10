@@ -1,0 +1,84 @@
+<div class="card text-center border-info odvoji">
+  <div class="card-header text-info">
+    Industrija: {{oglas.industrija}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{oglas.naziv}}</h5>
+    <form [formGroup]="obavijestForm" (ngSubmit)="posaljiObavijest()">
+      <div class="form-group">
+        <label for="naslov">Naslov obavijesti:</label>
+        <input type="text" class="form-control" formControlName="naslov">                           
+      </div> 
+      <div *ngIf="naslov.touched && naslov.errors?.required" class="alert alert-danger">
+        Ovo polje mora biti ispunjeno
+      </div>    
+      <div class="form-group">
+        <label for="naslov">Tekst obavijesti:</label>
+        <textarea class="form-control" formControlName="tekst"></textarea>                         
+      </div>
+      <div *ngIf="tekst.touched && tekst.errors?.required" class="alert alert-danger">
+        Ovo polje mora biti ispunjeno
+      </div>      
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Ime i prezime</th>
+            <th scope="col">Industrija</th>
+            <th scope="col">Obrazovanje</th>
+            <th scope="col">Datum rođenja</th>
+            <th scope="col">Kontakt</th>
+            <!--<th scope="col">Lokacija</th>-->
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let kandidat of kandidati">
+          <tr>        
+            <td>{{kandidat.ime}} {{kandidat.prezime}}</td>
+            <td>{{kandidat.industrija}}</td>
+            <td>{{kandidat.obrazovanje}}</td>
+            <td>{{kandidat.datumRodenja | date:'dd.MM.yyyy'}}</td>
+            <td>{{kandidat.email}} / {{kandidat.brojMobitela}}</td>
+            <!--<td>{{kandidat.zemlja}}</td>-->
+            <td>
+              <button *ngIf="!kandidat.oznacen" class="btn btn-success" (click)="addKandidatId(kandidat)">Označi</button>
+              <button *ngIf="kandidat.oznacen" class="btn btn-danger" (click)="removeKandidatId(kandidat)">Odznači</button>
+            </td>
+          </tr>      
+        </tbody>
+      </table>
+    
+      <button [disabled]="kandidatIds.length === 0" type="submit" class="btn btn-primary">Pošalji obavijest</button>
+  </form>
+  </div>
+  <div class="card-footer text-muted">
+    {{oglas.datum | date:'dd.MM.yyyy'}}
+  </div>
+</div>
+
+
+<!--
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Ime i prezime</th>
+        <th scope="col">Industrija</th>
+        <th scope="col">Obrazovanje</th>
+        <th scope="col">Datum rođenja</th>
+        <th scope="col">Kontakt</th>
+        <th scope="col">Lokacija</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let kandidat of kandidati">
+      <tr>        
+        <td>{{kandidat.ime}} {{kandidat.prezime}}</td>
+        <td>{{kandidat.industrija}}</td>
+        <td>{{kandidat.obrazovanje}}</td>
+        <td>{{kandidat.datumRodenja | date:'dd.MM.yyyy'}}</td>
+        <td>{{kandidat.email}} / {{kandidat.brojMobitela}}</td>
+        <td>{{kandidat.zemlja}}</td>
+        <td><button type="button" class="btn btn-success">Pošalji obavijest</button></td>
+      </tr>      
+    </tbody>
+  </table>
+  -->

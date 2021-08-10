@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-sm-6" *ngFor="let prijava of prijave">
+      <div class="card text-center border-info">
+        <div class="card-header text-info">
+          Datum prijave: {{prijava.datumPrijave | date:"dd.MM.yyyy"}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Oglas: {{prijava.nazivOglas}}</h5>
+          <p class="card-text">Poslodavac: {{prijava.firma}}</p>
+          <p class="card-text">Industrija: {{prijava.industrija}}</p>            
+                      
+          <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample{{prijava.id}}" role="button" aria-expanded="false"
+             aria-controls="collapseExample{{prijava.id}}">
+              Pogledaj detalje prijave
+            </a>  
+            
+            <!--<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#brisanje"
+            aria-expanded="false" aria-controls="brisanje">Obriši prijavu</button>         -->
+            <a type="button" class="btn btn-danger" data-toggle="modal" href="#staticBackdrop{{prijava.id}}">
+              Obriši prijavu
+            </a>
+        </p>       
+        <div class="collapse" id="collapseExample{{prijava.id}}">
+          <div class="card card-body">
+              <p class="card-text">Opis oglasa: {{prijava.opis}}</p>
+              <div *ngFor="let qa of prijava.pitanjeOdgovor">
+                  <p>Pitanje: {{qa.tekstPitanje}}
+                      <br>
+                     Odgovor: {{qa.tekstOdgovor}} 
+                  </p>                  
+              </div>   
+          </div>
+        </div>   
+          <div class="modal fade" id="staticBackdrop{{prijava.id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Obriši</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                 Želite li obrisati ovu prijavu?<br>
+                 Brisanjem prijave brišu se i odgovori.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                <button type="button" class="btn btn-danger" (click)="deletePrijava(prijava.id)" data-dismiss="modal">Obriši</button>
+                </div>
+            </div>
+            </div>
+        </div>          
+        
+         
+         <!--<div class="collapse" id="brisanje">
+              <div class="card card-body">
+                <p>Želiš li obrisati prijavu i sve povezane podatke?</p>
+                <button class="btn btn-danger" (click)="deletePrijava(prijava.id)">Obriši</button>
+              </div>
+
+          </div>   -->   
+        </div>
+      </div>
+    </div>    
+</div>

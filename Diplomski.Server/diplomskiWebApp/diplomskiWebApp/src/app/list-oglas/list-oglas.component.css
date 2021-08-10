@@ -1,0 +1,24 @@
+.card {
+    margin-top: 2%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+button{
+    margin-right: 5px;
+    size: small;
+}
+
+a{
+    margin-right: 5px;
+}
+
+.row {
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 5%;
+}
+.col-sm-6 {
+    padding-bottom: 15px;
+}
+

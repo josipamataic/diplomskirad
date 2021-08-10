@@ -1,0 +1,13 @@
+.row {
+    padding-left: 20px;
+    padding-right: 10px;
+}
+.col-sm-6 {
+    padding-bottom: 30px;
+}
+
+.card {
+    margin-top: 2%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}

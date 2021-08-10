@@ -1,0 +1,93 @@
+<!--<div class="containter-fluid">
+    <div class="row">
+        <div class="col-lg-3" *ngFor="let ogl of oglas">
+            <ul class="list-group">
+            <li class="list-group-item disabled" aria-disabled="true">{{ogl.naziv}}</li>
+                       
+          </ul>   
+          <button routerLink="/oglas/{{ogl.id}}" class="btn btn-primary">Pogledaj detalje oglasa</button>
+            <button class="btn btn-warning" (click)="editOglas(ogl.id)">Uredi</button>    
+            <button class="btn btn-danger" (click)="deleteOglas(ogl.id)">Obriši</button>         
+        </div>   
+             
+    </div>
+</div>-->
+<div style="padding-left: 2%; padding-top: 1%;">
+  <h4>Moji oglasi</h4>
+</div>
+<div class="row">
+    <div class="col-sm-6" *ngFor="let ogl of oglas">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">{{ogl.naziv}}</h5>  
+          <p class="card-text">Datum: {{ogl.datum | date:'dd.MM.yyyy'}}</p>
+          <p *ngIf="ogl.arhiviran" class="card-text">Arhiviran</p>
+          <div class="gumbi">
+            <a routerLink="/oglas/{{ogl.id}}" class="btn btn-primary">Pogledaj detalje oglasa</a>
+          <!--<button class="btn btn-warning" (click)="editOglas(ogl.id)">Uredi</button>-->
+          <a routerLink="/oglas/{{ogl.id}}/obavijest" class="btn btn-warning">Obavijesti kandidate</a> 
+          <a routerLink="/oglas/{{ogl.id}}/kandidati" class="btn btn-success" *ngIf="!ogl.arhiviran">Pogledaj prijave</a>   
+          <a *ngIf="!ogl.arhiviran" type="button" class="btn btn-secondary" data-toggle="modal" href="#staticBackdropArh{{ogl.id}}">
+            Arhiviraj
+          </a>
+            
+        <!--  <button class="btn btn-danger" (click)="deleteOglas(ogl.id)">Obriši</button>     -->    
+        
+            <a type="button" class="btn btn-danger" data-toggle="modal" href="#staticBackdrop{{ogl.id}}">
+                Obriši
+            </a>
+
+              <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop{{ogl.id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Obriši</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                     Brisanjem oglasa obrisat će se i sve prijave i odgovori kandidata.<br>
+                     Želite li obrisati ovaj oglas? 
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteOglas(ogl.id)" data-dismiss="modal">Obriši</button>
+                    </div>
+                </div>
+                </div>
+            </div>     
+            
+            <div class="modal fade" id="staticBackdropArh{{ogl.id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel1{{ogl.id}}" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel1{{ogl.id}}">Arhiviraj</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body">
+                    Arhiviranjem oglasa obrisat će se odgovori kandidata i više nećete moći pristupiti prijavama. 
+                    Oglas ostaje vidljiv u sustavu.<br>
+                    Kandidati ne vide oglase koji su arhivirani pa su daljnje prijave onemogućene.<br>
+                    Kandidatima koji imaju javan profil a prijavili su se na ovaj oglas ćete i dalje moći slati obavijest o oglasima.<br>
+                   Želite li arhivirati ovaj oglas?
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                  <button type="button" class="btn btn-warning" (click)="arhivirajOglas(ogl.id)" data-dismiss="modal">Arhiviraj</button>
+                  </div>
+              </div>
+              </div>
+          </div>          
+            
+          </div>
+          
+          
+           
+        </div>
+      </div>
+    </div>   
+ </div>

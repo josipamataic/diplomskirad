@@ -1,0 +1,45 @@
+<!--<div class="containter-fluid">
+    <div class="row">
+        <div class="col-lg-3" *ngFor="let oglas of oglasi">
+            <ul class="list-group">
+            <li class="list-group-item disabled" aria-disabled="true">{{oglas.naziv}}</li>
+            <li class="list-group-item disabled" aria-disabled="true">{{oglas.industrija}}</li>
+            <li class="list-group-item disabled" aria-disabled="true">{{oglas.opis}}</li>
+            <li class="list-group-item disabled" aria-disabled="true">{{oglas.firma}}</li> 
+            <li class="list-group-item disabled" aria-disabled="true">{{oglas.lokacija}}</li>                      
+          </ul>   
+          <button routerLink="/oglas/{{ogl.id}}" class="btn btn-primary">Pogledaj detalje oglasa</button>
+            <button class="btn btn-warning" (click)="editOglas(ogl.id)">Uredi</button>    
+            <button class="btn btn-danger" (click)="deleteOglas(ogl.id)">Obriši</button>         
+        </div>   
+             
+    </div>
+</div>-->
+<div class="col-sm-6 text-center">
+  <br>  
+    <label>Pretraži oglase prema industriji:</label>
+    <select class="form-control" #indId (change)='filterByIndustrija(indId.value)'>  
+        <option [value]="616" selected>Svi oglasi</option>    
+        <option *ngFor="let ind of industrije" [value]="ind.id">{{ind.naziv}}</option>       
+    </select>
+   
+    
+</div>
+<div class="row">
+    <div class="col-sm-6" *ngFor="let oglas of oglasi">
+      <div class="card text-center border-info" >
+        <div class="card-header text-info">
+          Industrija: {{oglas.industrija}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{oglas.naziv}}</h5>
+          Poslodavac: <a data-toggle="tooltip" data-placement="top" title="Pregledaj poslodavca" href="/poslodavac/{{oglas.poslodavacId}}/oglasi"  class="card-text">{{oglas.firma}}</a>          
+          <p class="card-text">Lokacija: {{oglas.lokacija}}</p>         
+          <a href="/oglas/{{oglas.id}}" class="btn btn-info">Detalji i prijava</a>
+        </div>
+        <div class="card-footer text-muted">
+          Datum objave oglasa: {{oglas.datum | date:'dd.MM.yyyy'}}
+        </div>
+      </div>
+    </div>   
+ </div>

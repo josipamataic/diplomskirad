@@ -1,0 +1,143 @@
+<!--<div class="container-fluid">
+    <div class="col">
+        <h3>Naziv: {{oglas.naziv}}</h3>
+        <h4>Poslodavac: {{oglas.userName}}</h4>
+      <h5>Industrija: {{oglas.industrija}}</h5>-  
+        <p>Opis: {{oglas.opis}}</p>
+        <p>Datum: {{oglas.datum}}</p>
+        <button (click)="onPrijaviSe()" *ngIf="!prijavaMode">Prijavi se</button>
+
+        <div *ngIf="oglas.pitanja.length != 0 && prijavaMode" class="pitanja">
+          <form [formGroup]="createOdgovoriForm" (ngSubmit)="createPrijava()">
+            <div formArrayName="odgovori">
+            
+                <h5>Pitanja</h5>
+                <div *ngFor="let pitanje of oglas.pitanja; let pitanjeIndex = index" [formGroupName]="pitanjeIndex" class="pitanje">
+                  <div hidden class="form-group">
+                    <textarea formControlName="pitanjeId">{{pitanje.id}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <span >{{pitanje.tekst}}</span>                 
+                    <textarea formControlName="odgovorTekst"></textarea>                      
+                  </div>                  
+                </div>  
+                <button type="submit">Potvrdi prijavu</button>
+            
+            </div>         
+        </form>
+      </div> 
+
+    </div>
+</div>-->
+
+<div class="card text-center border-info" *ngIf="isUserKandidat">
+  <div class="card-header text-info">
+    {{oglas.firma}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{oglas.naziv}}</h5>
+    <p class="card-text">{{oglas.industrija}}</p>
+    <p class="card-text">{{oglas.opis}}</p>    
+    <button class="btn btn-primary" (click)="onPrijaviSe()"
+      data-toggle="collapse" data-target="#prijavljivanje"  aria-expanded="false" aria-controls="prijavljivanje"
+     *ngIf="!prijavaMode && oglas.pitanja.length > 0 && !postojiPrijava"
+     >Odgovori na pitanja i prijavi se</button>
+    <button class="btn btn-primary" (click)="createPrijava()" *ngIf="oglas.pitanja.length == 0 && !postojiPrijava">Prijavi se</button>
+    <button *ngIf="postojiPrijava" type="button" class="btn btn-warning" disabled>Već ste prijavljeni na ovaj oglas</button>
+    
+    <div class="collapse" id="prijavljivanje">
+      <div class="card card-body">
+        <div *ngIf="oglas.pitanja.length != 0 && prijavaMode" class="pitanja">
+          <form [formGroup]="createOdgovoriForm">
+            <div formArrayName="odgovori">
+            
+                <!--<h5>Pitanja</h5>-->
+                <div *ngFor="let pitanje of oglas.pitanja; let pitanjeIndex = index" [formGroupName]="pitanjeIndex" class="pitanje">
+                  <div hidden class="form-group">
+                    <textarea formControlName="pitanjeId">{{pitanje.id}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <span >{{pitanje.tekst}}</span>                 
+                    <textarea formControlName="odgovorTekst"></textarea>                      
+                  </div>                  
+                </div>  
+                <button class="btn btn-success" data-toggle="modal" data-target="#privatnostprijave">Potvrdi prijavu</button>
+                <a routerLink="/allOglas" class="btn btn-secondary">Odustani</a>  
+
+                    <!-- MODAL -->
+                <div class="modal fade" id="privatnostprijave" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="privatnostprijaveLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                      <h5 class="modal-title" id="privatnostprijaveLabel">Pristanak: prijava na oglas</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>
+                      <div class="modal-body">
+                        Podaci se prikupljaju u svrhu pronalaska prikladnog kandidata za otvoreno radno mjesto.
+                      Prijavom na oglas poslodavac {{oglas.firma}} može vidjeti Vaše osobne podatke profila, kao i odgovore na pitanja ovog oglasa.
+                      <br>Želite li se prijaviti i omogućiti pristup poslodavcu {{oglas.firma}} podacima i odgovorima? 
+                      Odgovori se čuvaju dok poslodavac ne arhivira ili obriše oglas ili dok samostalno ne obrišete prijavu.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success" (click)="createPrijava()" data-dismiss="modal">Da</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>                     
+                      </div>
+                  </div>
+                  </div>
+              </div>     
+            </div>                     
+        </form>
+      </div>   
+      </div>
+    </div>
+  
+
+  </div>  
+  <div class="card-footer text-muted">
+    {{oglas.datum | date:'dd.MM.yyyy'}}
+  </div>  
+</div>
+
+<!--
+<div class="row" *ngIf="isUserPoslodavac">
+  <div class="col-sm-6">
+    <div class="card" >
+      <div class="card-body">
+        <h5 class="card-title">{{oglas.naziv}}</h5>
+        <p class="card-text">{{oglas.opis}}</p>
+        <p class="card-text">Industrija: {{oglas.industrija}}</p>        
+        <p class="card-text">Datum: {{oglas.datum | date:'dd.MM.yyyy'}}</p>
+        <p class="card-text">Arhiviran: {{oglas.arhiviran}}</p> 
+        <label *ngIf="oglas.pitanja.length > 0">Pitanja:</label>
+        <div *ngFor="let pitanje of oglas.pitanja">         
+          <p class="card-text">{{pitanje.tekst}}</p>
+        </div>       
+      </div>
+    </div>
+  </div>   
+</div>
+-->
+
+<div *ngIf="isUserPoslodavac" class="card border-info text-center">
+  <div class="card-header text-info">
+    Industrija: {{oglas.industrija}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">  {{oglas.naziv}}</h5>    
+    <p class="card-text">Opis: {{oglas.opis}} </p>     
+    <label *ngIf="oglas.pitanja.length > 0"><b>Pitanja:</b></label>
+        <div *ngFor="let pitanje of oglas.pitanja">         
+          <p class="card-text">{{pitanje.tekst}}</p>
+        </div> 
+        <br>
+    <p *ngIf="oglas.arhiviran" class="card-text">Arhiviran</p>    
+    <a href="/oglaslist" class="btn btn-secondary">Natrag</a>
+    <p></p>
+    
+  </div>
+  <div class="card-footer text-muted">
+    Datum objave oglasa: {{oglas.datum | date:'dd.MM.yyyy'}}
+  </div>
+</div>

@@ -1,0 +1,75 @@
+
+<div class="card border-info text-center">
+    <div class="card-header text-info">
+        Industrija: {{kandidat.industrija}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{kandidat.ime}} {{kandidat.prezime}}</h5>
+      <p>Datum rođenja: {{kandidat.datumRodenja | date: 'dd.MM.yyyy'}}</p>
+        <p>Email: {{kandidat.email}}</p>
+        <p>Broj mobitela: {{kandidat.brojMobitela}}</p>
+        <p>Obrazovanje: {{kandidat.obrazovanje}}</p>
+        <p>Država: {{kandidat.zemlja}}</p>
+    </div>
+    <div class="card-footer text-muted">
+        <a routerLink="/kandidat/edit" class="btn btn-warning">Uredi profil</a> 
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">
+            Obriši podatke
+        </button>
+
+        <!-- MODAL -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Obriši</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    Brisanjem osobnih podataka profila automatski se brišu prijave i povezani odgovori koje ste stvorili.<br>                     
+                    Jeste li sigurni da želite obrisati podatke?<br>
+                    Nakon brisanja podataka i dalje Vam je omogućena prijava u sustav putem korisničkog imena i lozinke,
+                    ali za prijavljivanje na oglase potrebno je imati ispunjene podatke na profilu.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                <button type="button" class="btn btn-danger" (click)="deleteKandidat()" data-dismiss="modal">Obriši podatke</button>
+                </div>
+            </div>
+            </div>
+        </div>  
+
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop1">
+            Obriši profil
+        </button>
+
+        <!-- MODAL -->
+        <div class="modal fade" id="staticBackdrop1" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel1">Obriši</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    Brisanjem korisničkog profila brišu se podaci Vašeg profila, zajedno s korisničkim imenom i lozinkom.<br>
+                    Također se brišu sve Vaše prijave i povezani odgovori koje ste stvorili, kao i obavijesti koje ste primili 
+                    od poslodavaca.
+                    <br>                     
+                    Jeste li sigurni da želite obrisati podatke?<br>
+                    Nakon brisanja podataka više se nećete moći prijaviti u sustav koristeći obrisane podatke. Za ponovno korištenje
+                    sustava bit će potrebno ponovno se registrirati.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                <button type="button" class="btn btn-danger" (click)="deleteUser()" data-dismiss="modal">Obriši profil</button>
+                </div>
+            </div>
+            </div>
+        </div>  
+    </div>
+  </div>

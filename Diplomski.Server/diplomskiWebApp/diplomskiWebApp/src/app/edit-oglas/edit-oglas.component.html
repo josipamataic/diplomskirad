@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form [formGroup]="oglasForm">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Naziv</label>
+                  <input type="text" class="form-control" formControlName="naziv">                 
+                </div>          <!--  
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Industrija</label>
+                  <input type="text" class="form-control" formControlName="industrija">
+                </div>  --> 
+                <div class="form-group">
+                  <label>Industrija:</label>
+                  <select class="form-control" formControlName="industrijaId">
+                      <option *ngFor="let ind of industrije" type="number" value={{ind.id}}>{{ind.naziv}}</option>
+                  </select>
+               </div>              
+               <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Opis</label>
+                  <textarea class="form-control" formControlName="opis" rows="3"></textarea>
+                </div>   
+                <div class="form-group">
+                  <label *ngIf="oglas.pitanja.length > 0 || novaPitanja.length > 0">Pitanja:</label>
+                  <div *ngFor="let pitanje of oglas.pitanja">         
+                    <p class="card-text">{{pitanje.tekst}}</p>
+                    <button type="button" class="btn btn-danger" (click)="deletePitanje(pitanje.id)">Obriši</button>
+                  </div>
+                  <div *ngFor="let novoPitanje of novaPitanja">         
+                    <p class="card-text">{{novoPitanje}}</p>
+                    <button type="button" class="btn btn-danger" (click)="deleteNovoPitanje(novoPitanje)">Obriši</button>
+                  </div>
+                </div>
+                <form [formGroup]="pitanjeForm" (ngSubmit)="addQuestion()">
+                  <div class="form-group">
+                    <label for="pitanje">Unesi Pitanje</label>
+                    <input type="text" class="form-control" id="pitanje" formControlName="pitanje">
+                    <!--<a (click)="addQuestion(pitanje)" class="btn btn-primary"></a>-->
+                    <button type="submit" class="btn btn-primary">Dodaj pitanje</button>                    
+                  </div>
+                </form>      
+                <button class="btn btn-primary" (click)="editOglas()">Ažuriraj</button>
+              </form>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

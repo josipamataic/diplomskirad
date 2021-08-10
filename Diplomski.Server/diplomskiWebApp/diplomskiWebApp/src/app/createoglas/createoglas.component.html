@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form [formGroup]="oglasForm" (ngSubmit)="create()">
+                <div class="form-group">
+                  <label for="naziv">Naziv</label>
+                  <input type="text" class="form-control" formControlName="naziv">                           
+                </div>
+                <div class="alert alert-danger" *ngIf="naziv.touched && naziv.errors?.required" >
+                    Potrebno je unijeti naziv oglasa.
+                </div>
+                <div class="form-group">
+                  <label>Industrija:</label>
+                  <select class="form-control" formControlName="industrijaId">
+                      <option *ngFor="let ind of industrije" type="number" value={{ind.id}}>{{ind.naziv}}</option>
+                  </select>
+              </div>
+                <div *ngIf="industrijaId.touched && industrijaId.errors?.required" class="alert alert-danger">
+                    Potrebno je unijeti industriju.
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Opis</label>
+                    <textarea class="form-control" formControlName="opis" rows="3"></textarea>
+                  </div>  
+                <div *ngIf="opis.touched && opis.errors?.required" class="alert alert-danger">
+                     Potrebno je unijeti opis.
+                </div>
+
+                <form [formGroup]="pitanjeForm" (ngSubmit)="addQuestion()">
+                  <div class="form-group forma">
+                    <label for="pitanje">Pitanje</label>
+                    <input type="text" class="form-control" id="pitanje" formControlName="pitanje">
+                    <!--<a (click)="addQuestion(pitanje)" class="btn btn-primary"></a>-->
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-sm">Dodaj pitanje</button>
+
+                    <div *ngIf="pitanja.length != 0" class="pitanja">
+                      <h6>Pitanja</h6>
+                      <div *ngFor="let pitanje of pitanja" class="pitanje">
+                        <span>{{pitanje}}</span>
+                        <span class="btn btn-danger btn-sm pored" (click)="removeQuestion(pitanje)">Izbrisi</span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                
+
+                <button type="submit" class="btn btn-primary">Stvori oglas</button>
+              </form>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

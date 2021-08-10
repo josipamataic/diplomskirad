@@ -1,0 +1,17 @@
+.pitanja{
+    margin-top: 10px;
+}
+.pored{
+    margin-left: 10%;
+    
+}
+.pitanje{
+    margin-top: 15px;
+}
+.forma{
+    border: 1px blue;
+    padding: 5px 5px 5px 5px;
+    width: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

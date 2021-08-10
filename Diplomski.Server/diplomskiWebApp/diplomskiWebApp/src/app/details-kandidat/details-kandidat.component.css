@@ -1,0 +1,32 @@
+.container-fluid {
+    border: 1px solid grey;
+    padding: 10 px;
+    width: auto;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+a{
+    margin-bottom: 13px;
+}
+
+button{
+    margin-bottom: 13px;
+    margin-left: 10px;
+}
+
+
+.card{
+
+    width:auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+
+}
+
+.card-footer{
+    height: auto;
+}

@@ -1,0 +1,28 @@
+/*form{
+    border: white;
+    padding: 10px 10px 10px 10px ;
+    width: auto;    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}*/
+
+form{
+    border: 1px lavender;
+    padding: 5px 5px 5px 5px;
+    width: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.card{
+
+    width:auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10px;
+
+}
+
+.odvoji{
+    margin-bottom: 5%;
+}

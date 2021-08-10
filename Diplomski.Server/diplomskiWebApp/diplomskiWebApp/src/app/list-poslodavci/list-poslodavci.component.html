@@ -1,0 +1,33 @@
+<!--<div class="row">
+    <div class="col-sm-6" *ngFor="let poslodavac of poslodavci">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">{{poslodavac.nazivFirme}}</h5>
+          <p class="card-text">{{poslodavac.kontakt}}</p>
+          <p class="card-text">Industrija: {{poslodavac.industrija}}</p>
+          <p class="card-text">Opis: {{poslodavac.opis}}</p>
+          <p class="card-text">Lokacija: {{poslodavac.zemlja}}</p>
+          <a href="/poslodavac/{{poslodavac.id}}/oglasi" class="btn btn-primary">Pogledaj oglase</a>
+        </div>
+      </div>
+    </div>   
+ </div>-->
+
+
+ <div class="row">
+  <div class="col-sm-6" *ngFor="let poslodavac of poslodavci">
+    <div class="card text-center border-info">
+      <div class="card-header text-info">
+        Industrija: {{poslodavac.industrija}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{poslodavac.nazivFirme}}</h5>
+        <p class="card-text">Opis: {{poslodavac.opis}}</p>
+        <a href="/poslodavac/{{poslodavac.id}}/oglasi" class="btn btn-info">Pogledaj poslodavca</a>
+      </div>
+      <div class="card-footer text-muted">
+        Lokacija: {{poslodavac.zemlja}}
+      </div>
+    </div>
+  </div>   
+</div>

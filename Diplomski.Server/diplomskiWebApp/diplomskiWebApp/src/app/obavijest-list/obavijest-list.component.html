@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-4" *ngFor="let obavijest of obavijesti">
+      <div class="card border-info" >
+        <div class="card-header  text-info  text-center">
+          Poslodavac: {{obavijest.nazivPoslodavca}}
+        </div>
+        <div class="card-body  text-center">
+          <h5 class="card-title">{{obavijest.naslov}}</h5>
+          <p class="card-text">{{obavijest.tekst}}</p>          
+          <p class="card-text">Oglas: {{obavijest.nazivOglas}}</p>               
+          <a href="/oglas/{{obavijest.oglasId}}" class="btn btn-info">Pogledaj oglas</a>
+          <p></p>
+          
+        </div>
+        <div class="card-footer text-muted text-center">
+          Datum obavijesti: {{obavijest.created| date:'dd.MM.yyyy'}}
+        </div>
+      </div>
+    </div>   
+ </div>
+

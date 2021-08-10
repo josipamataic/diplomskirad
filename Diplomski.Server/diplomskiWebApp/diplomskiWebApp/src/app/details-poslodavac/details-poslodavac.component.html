@@ -1,0 +1,28 @@
+<!--<div class="container-fluid">
+    <div class="col">
+        <p>Naziv firme: {{poslodavac.nazivFirme}}</p>
+        <p>Kontakt: {{poslodavac.kontakt}}</p>
+        <p>Email: {{poslodavac.email}}</p>
+        <p>Industrija: {{poslodavac.industrija}}</p>  
+        <p>Opis: {{poslodavac.opis}}</p>
+        <p>Lokacija: {{poslodavac.zemlja}}</p>
+        <a routerLink="/poslodavac/edit" class="btn btn-warning">Uredi profil</a> 
+    </div>
+</div>-->
+
+<div class="card border-info text-center">
+    <div class="card-header text-info">
+        Industrija: {{poslodavac.industrija}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{poslodavac.nazivFirme}}</h5>
+      <p>Kontakt: {{poslodavac.kontakt}}</p>
+      <p>Email: {{poslodavac.email}}</p>
+      <p>Opis: {{poslodavac.opis}}</p>
+      <p>Lokacija: {{poslodavac.zemlja}}</p>
+      
+    </div>
+    <div class="card-footer text-muted">
+        <a routerLink="/poslodavac/edit" class="btn btn-warning">Uredi profil</a> 
+    </div>
+  </div>

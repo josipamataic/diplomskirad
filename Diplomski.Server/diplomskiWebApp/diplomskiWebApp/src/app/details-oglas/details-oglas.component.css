@@ -1,0 +1,29 @@
+form{
+    border: 1px lavender;
+    padding: 5px 5px 5px 5px;
+    width: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.card{
+
+    width:auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+    
+
+}
+
+.card-header{
+    font-weight: bold;
+}
+
+button{
+    margin-right: 5px;
+}
+
+textarea{
+    margin-left: 20px;
+}

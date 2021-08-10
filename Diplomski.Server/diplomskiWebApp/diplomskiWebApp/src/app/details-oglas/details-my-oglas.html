@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-sm-6" *ngFor="let oglas of oglasi">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">{{oglas.naziv}}</h5>
+          <p class="card-text">{{oglas.firma}}</p>
+          <p class="card-text">Industrija: {{oglas.industrija}}</p>
+          <p class="card-text">Lokacija: {{oglas.lokacija}}</p>
+          <p class="card-text">Datum: {{oglas.datum | date:'dd.MM.yyyy'}}</p>
+          <div *ngFor="let pitanje of oglas.pitanja">         
+            <p class="card-text">{{pitanje.tekst}}</p>
+          </div>
+          <button class="btn btn-warning" (click)="editOglas(oglas.id)">Uredi</button>    
+          <button class="btn btn-danger" (click)="deleteOglas(oglas.id)">Obriši</button> 
+        </div>
+      </div>
+    </div>   
+ </div>
